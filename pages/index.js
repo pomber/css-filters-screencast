@@ -73,9 +73,10 @@ const browserSteps = [
   { loadUrl: "/1.html" },
   { loadUrl: "/2.html" },
   { loadUrl: "/3.html" },
+  { loadUrl: "/3.1.html" },
   { loadUrl: "/4.html" },
   { loadUrl: "/5.html" },
-  { loadUrl: "/5.html" },
+  // { loadUrl: "/5.html" },
   { loadUrl: "/6.html" },
 ];
 
@@ -96,6 +97,11 @@ const codeSteps = [
     focus: "10:14,16",
   },
   {
+    code: require(`!!raw-loader!../public/3.1.html`).default,
+    file: "index.html",
+    focus: "12:22",
+  },
+  {
     code: require(`!!raw-loader!../public/4.html`).default,
     file: "index.html",
     focus: "10:12",
@@ -105,11 +111,11 @@ const codeSteps = [
     file: "index.html",
     focus: "10:12,14:18",
   },
-  {
-    code: require(`!!raw-loader!../public/5.html`).default,
-    file: "index.html",
-    focus: "11[17:34],15[15:31]",
-  },
+  // {
+  //   code: require(`!!raw-loader!../public/5.html`).default,
+  //   file: "index.html",
+  //   focus: "11[17:34],15[15:31]",
+  // },
   {
     code: require(`!!raw-loader!../public/6.html`).default,
     file: "index.html",
