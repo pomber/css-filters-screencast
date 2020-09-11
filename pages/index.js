@@ -123,12 +123,13 @@ function Screencast({ videoSteps, browserSteps, codeSteps, captionSteps }) {
   return (
     <div
       style={{
-        height: "90vh",
+        height: "100vh",
         width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexFlow: "column",
+        overflow: "hidden",
       }}
     >
       <style jsx global>{`
@@ -136,7 +137,13 @@ function Screencast({ videoSteps, browserSteps, codeSteps, captionSteps }) {
           font-size: 25px;
           line-height: 1.2em;
         }
+        body,
+        html {
+          margin: 0;
+        }
       `}</style>
+
+      <div style={{ marginBottom: 48, height: 32 }}></div>
       <main
         style={{
           width: 1024,
@@ -146,6 +153,8 @@ function Screencast({ videoSteps, browserSteps, codeSteps, captionSteps }) {
           gridTemplateRows: "repeat(5, 1fr)",
           gridColumnGap: "16px",
           gridRowGap: "16px",
+          padding: 16,
+          boxSizing: "border-box",
         }}
       >
         <MiniEditor
@@ -186,7 +195,7 @@ function Screencast({ videoSteps, browserSteps, codeSteps, captionSteps }) {
         </div>
       </main>
 
-      <div style={{ marginTop: 48 }}>
+      <div style={{ marginTop: 48, height: 32 }}>
         <button onClick={() => playerRef.current.play()}>Play</button>
         <Video
           steps={videoSteps}
