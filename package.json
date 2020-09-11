@@ -3,6 +3,8 @@
     "@code-hike/mini-browser": "^0.2.1",
     "@code-hike/mini-editor": "^0.2.1",
     "@code-hike/player": "^0.2.1",
+    "@mdx-js/loader": "^1.6.11",
+    "@next/mdx": "^9.4.4",
     "next": "^9.5.3",
     "raw-loader": "^4.0.1",
     "react": "^16.13.1",
