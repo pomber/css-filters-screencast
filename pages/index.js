@@ -65,7 +65,7 @@ function getStepsFromMDX(children) {
 }
 
 function Screencast({ browserSteps, codeSteps }) {
-  const [step, setStep] = React.useState(0);
+  const [step, setStep] = React.useState(5);
   const [progress] = useSpring(step, {
     decimals: 3,
     stiffness: 80,

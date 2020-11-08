@@ -9,7 +9,7 @@ export default function PointLightWidget() {
   const [z, setZ] = React.useState(0.5);
   const [color, setColor] = React.useState("#FDB813");
   const width = 220;
-  const height = 100;
+  const height = 222;
 
   if (typeof window === "undefined") return null;
 
@@ -33,13 +33,13 @@ export default function PointLightWidget() {
         <h1
           style={{
             height: "100%",
-            textAlign: "center",
-            lineHeight: height + "px",
-            background: "#2222",
+            border: "4px solid black",
+            padding: 7,
+            fontSize: "40px",
             filter: `url(#${filterId})`,
           }}
         >
-          Hello
+          Lorem ipsum dolor sit amet
         </h1>
         <Slider
           label="X"

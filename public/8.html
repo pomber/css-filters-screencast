@@ -9,14 +9,23 @@
     </style>
     <h1>Lorem ipsum dolor sit amet</h1>
     <svg width="0" height="0">
-      <filter id="my-filter-id">
+      <filter
+        id="my-filter-id"
+        x="0%"
+        y="0%"
+        width="100%"
+        height="100%"
+        primitiveUnits="objectBoundingBox"
+      >
         <feDiffuseLighting
+          surfaceScale="50"
+          in="SourceGraphic"
           lighting-color="#FDB813"
         >
           <fePointLight
-            x="150"
-            y="150"
-            z="20"
+            x="0.5"
+            y="0.5"
+            z="0.5"
           />
         </feDiffuseLighting>
       </filter>
