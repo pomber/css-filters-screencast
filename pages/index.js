@@ -2,7 +2,6 @@ import React, { Children } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { MiniBrowser } from "@code-hike/mini-browser";
 import { MiniEditor } from "@code-hike/mini-editor";
-import { Video } from "@code-hike/player";
 import { useSpring } from "use-spring";
 import Steps from "../steps.mdx";
 
@@ -19,17 +18,8 @@ const components = {
 };
 
 function Wrapper({ children }) {
-  const { videoSteps, browserSteps, codeSteps, captionSteps } = getStepsFromMDX(
-    children
-  );
-  return (
-    <Screencast
-      videoSteps={videoSteps}
-      browserSteps={browserSteps}
-      codeSteps={codeSteps}
-      captionSteps={captionSteps}
-    />
-  );
+  const { browserSteps, codeSteps } = getStepsFromMDX(children);
+  return <Screencast browserSteps={browserSteps} codeSteps={codeSteps} />;
 }
 
 function getStepsFromMDX(children) {
@@ -42,11 +32,6 @@ function getStepsFromMDX(children) {
       const lastSplit = splits[splits.length - 1];
       lastSplit.push(child);
     }
-  });
-
-  const videoSteps = splits.map((split) => {
-    const videoElement = split.find((child) => child.props.mdxType === "Video");
-    return videoElement.props;
   });
 
   const browserSteps = splits.map((split) => {
@@ -73,52 +58,20 @@ function getStepsFromMDX(children) {
     };
   });
 
-  const captionSteps = splits.map((split) => {
-    const pre = split.find(
-      (child) =>
-        child.props.mdxType === "pre" &&
-        child.props.children.props.className === "language-srt"
-    );
-    if (!pre) return [];
-
-    return parseSrt(pre.props.children.props.children);
-  });
-
   return {
-    videoSteps,
     browserSteps,
     codeSteps,
-    captionSteps,
   };
 }
 
-function parseSrt(srt) {
-  const regex = /^[\d\.\:]+\s+[–\-]>\s+[\d\.\:]+$/gm;
-  const times = srt.match(regex);
-  if (!times) return [];
-  const [, ...texts] = srt.split(regex);
-  return times.map((time, i) => {
-    const [start, end] = time.match(/[\d\.]+/g).map((t) => +t);
-    return { start, end, text: texts[i].trim() };
-  });
-}
-
-function Screencast({ videoSteps, browserSteps, codeSteps, captionSteps }) {
+function Screencast({ browserSteps, codeSteps }) {
   const [step, setStep] = React.useState(0);
-  const [videoTime, setVideoTime] = React.useState(videoSteps[0].start);
   const [progress] = useSpring(step, {
     decimals: 3,
     stiffness: 80,
     damping: 48,
     mass: 8,
   });
-  const playerRef = React.useRef();
-
-  const caption = useCaption(captionSteps, step, videoTime);
-
-  const onTimeChange = (newTime, oldTime) => {
-    setVideoTime(newTime);
-  };
 
   return (
     <div
@@ -168,58 +121,16 @@ function Screencast({ videoSteps, browserSteps, codeSteps, captionSteps }) {
           steps={browserSteps}
           prependOrigin
           url="/hello-world"
-          style={{ gridArea: " 1 / 4 / 4 / 6" }}
-          zoom={1.6}
+          style={{ gridArea: " 1 / 4 / 6 / 6" }}
+          zoom={2.4}
           progress={progress}
         />
-        <div
-          style={{
-            gridArea: "4 / 4 / 6 / 6",
-            borderRadius: "6px",
-            overflow: "hidden",
-            background: "#222",
-            height: "100%",
-            boxShadow:
-              "0 6px 12px -2px rgba(50, 50, 93, 0.25), 0 3px 7px -3px rgba(0, 0, 0, 0.3)",
-            whiteSpace: "pre",
-            color: "#ddd",
-            alignItems: "center",
-            justifyContent: "center",
-            display: "flex",
-            fontSize: "1.4em",
-            lineHeight: "1.4em",
-            textAlign: "center",
-          }}
-        >
-          {caption}
-        </div>
       </main>
 
       <div style={{ marginTop: 48, height: 32 }}>
-        <button onClick={() => playerRef.current.play()}>Play</button>
-        <Video
-          steps={videoSteps}
-          containerStyle={{
-            height: "100px",
-            display: "none",
-          }}
-          onStepChange={setStep}
-          onTimeChange={onTimeChange}
-          ref={playerRef}
-        />
+        <button onClick={() => setStep((s) => s - 1)}>Prev</button>
+        <button onClick={() => setStep((s) => s + 1)}>Next</button>
       </div>
     </div>
   );
-}
-
-function useCaption(captionSteps, stepIndex, videoTime) {
-  const stepCaptions = captionSteps[stepIndex];
-
-  if (!stepCaptions) return null;
-
-  const caption = stepCaptions.find(
-    ({ start, end }) => start <= videoTime && videoTime < end
-  );
-
-  return caption ? caption.text : null;
 }
