@@ -3,10 +3,12 @@ import { PointLight } from "./point-light";
 
 const steps = [
   { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
+  { id: 2, focus: "4,8,9" },
+  { id: 3, focus: "4,8:11" },
+  { id: 4, focus: "4,8,9" },
+  { id: 5, focus: "8,12:16" },
+  { id: "5.1", focus: "13:17" },
+  { id: "5.3", code: "5.2" },
   { id: 6 },
   { id: 7, code: "7.1", focus: "12:26" },
   {

@@ -15,7 +15,7 @@ export default function Page() {
 }
 
 function Screencast({ browserSteps, codeSteps, overlaySteps }) {
-  const [step, setStep] = React.useState(6);
+  const [step, setStep] = React.useState(5);
   const [progress] = useSpring(step, {
     decimals: 3,
     stiffness: 80,

@@ -1,3 +1,39 @@
+We can use the filter CSS property to change how an element looks.
+
+---
+
+For example, we can blur it.
+
+---
+
+Or add a shadow.
+
+---
+
+One special filter we can use is the URL function.
+
+I takes an id as an argument. That's the id of an svg filter.
+
+---
+
+Somewhere on our html we need an svg element with a filter. And that filter should have the id from the css.
+
+---
+
+We can use the SVG filter to apply a basic effect, like a blur.
+
+---
+
+Or we can have something very complex combining several effects.
+
+---
+
+We are going to focus on the point light effect.
+
+---
+
+///
+
 We can apply several of graphical effects to any HTML element using the filter CSS property.
 
 ---
