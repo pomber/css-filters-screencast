@@ -7,7 +7,7 @@ export default function PointLightWidget() {
   const [x, setX] = React.useState(0.5);
   const [y, setY] = React.useState(0);
   const [z, setZ] = React.useState(0.5);
-  const [color, setColor] = React.useState("#FDB813");
+  const [color, setColor] = React.useState("#fdb813");
   const width = 220;
   const height = 222;
 

@@ -2,11 +2,18 @@ import React from "react";
 
 export function PointLight({ x, y, z, color }) {
   return (
-    <div style={{ margin: 8 }}>
+    <div
+      style={{
+        padding: 8,
+        overflow: "hidden",
+        height: "100%",
+        boxSizing: "border-box",
+      }}
+    >
       <h1
         style={{
           border: "4px solid black",
-          padding: 7,
+          padding: "20px 7px",
           filter: "url(#my-filter-id)",
           fontFamily: "initial",
           margin: 0,
@@ -15,14 +22,7 @@ export function PointLight({ x, y, z, color }) {
         Lorem ipsum dolor sit amet
       </h1>
       <svg height="0" width="0">
-        <filter
-          id="my-filter-id"
-          x="0%"
-          y="0%"
-          width="100%"
-          height="100%"
-          primitiveUnits="objectBoundingBox"
-        >
+        <filter id="my-filter-id" primitiveUnits="objectBoundingBox">
           <feDiffuseLighting
             surfaceScale="50"
             in="SourceGraphic"
