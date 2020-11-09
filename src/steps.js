@@ -8,9 +8,10 @@ const steps = [
   { id: 4 },
   { id: 5 },
   { id: 6 },
-  { id: 7, focus: "12:26" },
+  { id: 7, code: "7.1", focus: "12:26" },
   {
     id: 7,
+    code: "7.1",
     focus: "12:26",
     overlay: Overlay,
     browserChildren: <Demo />,
@@ -22,8 +23,8 @@ export const browserSteps = steps.map(({ id, browserChildren }) => ({
   children: browserChildren,
 }));
 
-export const codeSteps = steps.map(({ id, focus }) => ({
-  code: require(`!!raw-loader!../public/${id}.html`).default,
+export const codeSteps = steps.map(({ code, id, focus }) => ({
+  code: require(`!!raw-loader!../public/${code || id}.html`).default,
   focus,
 }));
 
@@ -32,7 +33,7 @@ export const overlaySteps = steps.map(
 );
 
 const X = 0.1;
-const Y = 0.1;
+const Y = 0.2;
 const Z = 0.15;
 
 const ParamsContext = React.createContext({
