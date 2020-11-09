@@ -1,8 +1,12 @@
-import React from "react";
-import { MiniBrowser } from "@code-hike/mini-browser";
-import { MiniEditor } from "@code-hike/mini-editor";
-import { useSpring } from "use-spring";
-import { browserSteps, codeSteps, overlaySteps } from "../src/steps";
+import React from "react"
+import { MiniBrowser } from "@code-hike/mini-browser"
+import { MiniEditor } from "@code-hike/mini-editor"
+import { useSpring } from "use-spring"
+import {
+  browserSteps,
+  codeSteps,
+  overlaySteps,
+} from "../src/steps"
 
 export default function Page() {
   return (
@@ -11,19 +15,23 @@ export default function Page() {
       codeSteps={codeSteps}
       overlaySteps={overlaySteps}
     />
-  );
+  )
 }
 
-function Screencast({ browserSteps, codeSteps, overlaySteps }) {
-  const [step, setStep] = React.useState(5);
+function Screencast({
+  browserSteps,
+  codeSteps,
+  overlaySteps,
+}) {
+  const [step, setStep] = React.useState(0)
   const [progress] = useSpring(step, {
     decimals: 3,
     stiffness: 80,
     damping: 48,
     mass: 8,
-  });
+  })
 
-  const Over = overlaySteps[Math.round(progress)];
+  const Over = overlaySteps[Math.round(progress)]
 
   return (
     <div
@@ -64,7 +72,10 @@ function Screencast({ browserSteps, codeSteps, overlaySteps }) {
           }}
         >
           <MiniEditor
-            style={{ gridArea: "1 / 1 / 6 / 4" }}
+            style={{
+              gridArea: "1 / 1 / 6 / 4",
+              height: "100%",
+            }}
             steps={codeSteps}
             lang="html"
             file="index.html"
@@ -82,9 +93,13 @@ function Screencast({ browserSteps, codeSteps, overlaySteps }) {
       </Over>
 
       <div style={{ marginTop: 48, height: 32 }}>
-        <button onClick={() => setStep((s) => s - 1)}>Prev</button>
-        <button onClick={() => setStep((s) => s + 1)}>Next</button>
+        <button onClick={() => setStep(s => s - 1)}>
+          Prev
+        </button>
+        <button onClick={() => setStep(s => s + 1)}>
+          Next
+        </button>
       </div>
     </div>
-  );
+  )
 }
