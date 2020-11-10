@@ -21,7 +21,7 @@ const steps = [
   {
     id: 7,
     code: "7.1",
-    focus: "12:26",
+    focus: "13:26",
     overlay: Overlay,
     browserChildren: <Demo />,
   },
