@@ -14,9 +14,10 @@ const steps = [
     browserChildren: (
       <img src="5.3.png" style={{ height: "100% " }} />
     ),
+    focus: "13:45",
   },
-  { id: 6 },
-  { id: 7, code: "7.1", focus: "12:26" },
+  { id: 6, focus: "13:23" },
+  { id: 7, code: "7.1", focus: "13:26" },
   {
     id: 7,
     code: "7.1",
