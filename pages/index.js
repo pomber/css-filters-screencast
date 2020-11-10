@@ -80,6 +80,7 @@ function Screencast({
             lang="html"
             file="index.html"
             progress={progress}
+            maxZoom={1}
           />
           <MiniBrowser
             steps={browserSteps}
