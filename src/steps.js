@@ -73,15 +73,16 @@ function Overlay({ children }) {
       <div
         style={{
           fontFamily: "monospace",
-          fontSize: 19.75,
+          fontSize: 18.5,
           color: "rgb(206, 145, 120)",
         }}
       >
         <div
           style={{
             position: "absolute",
-            top: "363px",
-            left: "232px",
+            top: "348px",
+            left: "199px",
+            display: "flex",
           }}
         >
           <span
@@ -104,8 +105,9 @@ function Overlay({ children }) {
         <div
           style={{
             position: "absolute",
-            top: "386px",
-            left: "232px",
+            top: "370px",
+            left: "199px",
+            display: "flex",
           }}
         >
           <span
@@ -128,8 +130,9 @@ function Overlay({ children }) {
         <div
           style={{
             position: "absolute",
-            top: "410px",
-            left: "232px",
+            top: "393px",
+            left: "199px",
+            display: "flex",
           }}
         >
           <span
@@ -152,8 +155,8 @@ function Overlay({ children }) {
         <div
           style={{
             position: "absolute",
-            top: "289px",
-            left: "362.7px",
+            top: "278px",
+            left: "321.7px",
           }}
         >
           <span
