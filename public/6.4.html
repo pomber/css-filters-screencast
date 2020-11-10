@@ -11,8 +11,15 @@
     <h1>Lorem ipsum dolor sit amet</h1>
     <svg width="0" height="0">
       <filter id="my-filter-id">
-        <feDiffuseLighting>
-          <fePointLight />
+        <feDiffuseLighting
+          surfaceScale="50"
+          lighting-color="#fdb813"
+        >
+          <fePointLight
+            x="100"
+            y="200"
+            z="60"
+          />
         </feDiffuseLighting>
       </filter>
     </svg>

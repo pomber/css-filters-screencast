@@ -16,12 +16,16 @@ const steps = [
     ),
     focus: "13:45",
   },
-  { id: 6, focus: "13:23" },
-  { id: 7, code: "7.1", focus: "13:26" },
+  { id: 6, focus: "13:17" },
+  { id: "6.1", focus: "13:17" },
+  { id: "6.2", focus: "13:19" },
+  { id: "6.3", focus: "13:20" },
+  { id: "6.4", focus: "13:24" },
+  { id: 7, code: "7.1", focus: "13:27" },
   {
     id: 7,
     code: "7.1",
-    focus: "13:26",
+    focus: "13:27",
     overlay: Overlay,
     browserChildren: <Demo />,
   },
@@ -80,7 +84,7 @@ function Overlay({ children }) {
         <div
           style={{
             position: "absolute",
-            top: "348px",
+            top: "337px",
             left: "199px",
             display: "flex",
           }}
@@ -105,7 +109,7 @@ function Overlay({ children }) {
         <div
           style={{
             position: "absolute",
-            top: "370px",
+            top: "359px",
             left: "199px",
             display: "flex",
           }}
@@ -130,7 +134,7 @@ function Overlay({ children }) {
         <div
           style={{
             position: "absolute",
-            top: "393px",
+            top: "381px",
             left: "199px",
             display: "flex",
           }}
@@ -155,7 +159,7 @@ function Overlay({ children }) {
         <div
           style={{
             position: "absolute",
-            top: "278px",
+            top: "266px",
             left: "321.7px",
           }}
         >
